@@ -26,7 +26,6 @@ class Gprom < Formula
            --disable-debug
            --disable-dependency-tracking
            --disable-silent-rules
-           --prefix=#{prefix}
     ]
 
     unless build.with? "oracle"
@@ -36,7 +35,7 @@ class Gprom < Formula
       args += %w[--disable-java]
     end
     
-    system "./configure", *args
+    system "./configure", "--prefix=#{prefix}", *args
     system "make", "install" # if this fails, try separate make/make install steps
   end
 
